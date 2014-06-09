@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<title>Waiting time</title>
 <style>
 	body {
 		font-family:'Courier New';
 		font-size:14px;
 	}
+    .onlyWhoWaited .didntwait{
+        display:none;
+    }
 </style>
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-  <meta charset="utf-8">
-  <title>Waiting time</title>
 </head>
 <body>
 	<p> 
-		capacity: <input id="capacity" type="number" value=100 min=4 /> <br>
-		consumersCount: <input id="consumersCount" type="number" value=500 min=1 /> <br>
-		estimatePerSingleTable: <input id="estimatePerSingleTable" type="number" value=5 /><br>
+		capacity: <input id="capacity" type="number" value=4 min=4 /> <br>
+		consumersCount: <input id="consumersCount" type="number" value=20 min=1 /> <br>
+		estimatePerSingleTable: <input id="estimatePerSingleTable" type="number" value=25 /><br>
 		hoursOfService: <input id="hoursOfService" type="number" value=4 /> <br>
 		serviceMinUsage: <input id="serviceMinUsage" type="number" value=15 /> <br>
-		serviceMaxUsage: <input id="serviceMaxUsage" type="number" value=25 /><br>
+		serviceMaxUsage: <input id="serviceMaxUsage" type="number" value=60 /><br>
 		k: <input id="k" type="number" max=1 min=0 step=0.1 value="0.3"/> <br>
 		predictionType: <input id="predictionType" type="number" max=2 min=0 value=0 /> <br>
-		display by group: <input type="checkbox" onclick="changeDisplayByGroup(this);"> only who waited: <input type="checkbox" onclick="changeOnlyWhoWaited(this);"> <br>
+		display by group: <input id="displayByGroup" type="checkbox" onclick="changeDisplayByGroup(this);" checked> only who waited: <input id="onlyWhoWaited" type="checkbox" onclick="changeOnlyWhoWaited(this);"> <br>
 		<button onclick="simulate(false)">simulate (keep groups)</button> <button onclick="simulate(true)">simulate</button>
 	</p>
+
 	<div id="ctrl"></div>
 	<div id="log"></div>
+    <p>
+        timestamp: <input id="timestamp" type="number" value=0 min="0" step="5">
+        groupid: <input id="groupid" type="number" value="0" min="0">
+        persons: <input id="persons" type="number" value="4" max="4" min="1">
+        checkout: <input id="status" type="checkbox">
+        <button onclick="addGroup()">add</button>
 
+    </p>
 <script src="main.js"></script>
 </body>
 </html>
